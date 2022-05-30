@@ -4,7 +4,8 @@ namespace gufi_webApi.Interfaces
 {
     public interface IPresencaRepository
     {
-        void Inscrever(Presenca presenca, int idUsuario);
+        List<Presenca> ListarMinhas(int idUsuario);
+        void Inscrever(Presenca presenca);
         void AtualizarPresencao(int idPresenca, string situacao);
     }
 }
