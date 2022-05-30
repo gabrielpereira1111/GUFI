@@ -12,7 +12,7 @@ namespace gufi_webApi.Domains
         [Required(ErrorMessage = "Informe o evento!")]
         public int? IdEvento { get; set; }
         [Required(ErrorMessage = "Informe a situação!")]
-        public int? IdSituacao { get; set; }
+        public int? IdSituacao { get; set; } = 3;
 
         public virtual Evento? IdEventoNavigation { get; set; }
         public virtual Situacao? IdSituacaoNavigation { get; set; }
