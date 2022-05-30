@@ -13,7 +13,7 @@ namespace gufi_webApi.Domains
 
         public int IdUsuario { get; set; }
         [Required(ErrorMessage = "Informe o tipo desse usuário!")]
-        public int? IdTipoUsuario { get; set; }
+        public int? IdTipoUsuario { get; set; } = null!;
         [Required(ErrorMessage = "Informe o nome do usuário!")]
         public string NomeUsuario { get; set; } = null!;
         [Required(ErrorMessage = "Informe o email do usuário!")]
