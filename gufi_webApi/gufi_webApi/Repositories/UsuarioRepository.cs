@@ -9,7 +9,14 @@ namespace gufi_webApi.Repositories
         GufiContext ctx = new GufiContext();
         public Usuario Login(string email, string senha)
         {
-            return ctx.Usuarios.FirstOrDefault(x => x.Email == email && x.Senha == senha);
+            Usuario usuarioBuscado = ctx.Usuarios.FirstOrDefault(x => x.Email == email && x.Senha == senha);
+            
+            if (usuarioBuscado != null)
+            {
+                return usuarioBuscado;
+            }
+
+            return null;
         }
     }
 }
