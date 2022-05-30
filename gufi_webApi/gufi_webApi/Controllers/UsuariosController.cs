@@ -22,7 +22,7 @@ namespace gufi_webApi.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login(LoginViewModel login, int idade)
+        public IActionResult Login(LoginViewModel login)
         {
             try
             {
