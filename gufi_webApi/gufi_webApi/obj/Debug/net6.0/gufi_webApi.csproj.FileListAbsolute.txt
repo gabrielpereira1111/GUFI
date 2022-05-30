@@ -61,3 +61,5 @@ C:\Users\PICHAU\Desktop\GUFI\gufi_webApi\gufi_webApi\obj\Debug\net6.0\refint\guf
 C:\Users\PICHAU\Desktop\GUFI\gufi_webApi\gufi_webApi\obj\Debug\net6.0\gufi_webApi.pdb
 C:\Users\PICHAU\Desktop\GUFI\gufi_webApi\gufi_webApi\obj\Debug\net6.0\gufi_webApi.genruntimeconfig.cache
 C:\Users\PICHAU\Desktop\GUFI\gufi_webApi\gufi_webApi\obj\Debug\net6.0\ref\gufi_webApi.dll
+C:\Users\PICHAU\Desktop\GUFI\gufi_webApi\gufi_webApi\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\PICHAU\Desktop\GUFI\gufi_webApi\gufi_webApi\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
