@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace gufi_webApi.Domains
 {
@@ -12,7 +13,7 @@ namespace gufi_webApi.Domains
 
         public int IdUsuario { get; set; }
         public int? IdTipoUsuario { get; set; }
-        public string NomeUsuario { get; set; } = null!;
+        public string? NomeUsuario { get; set; }
         public string Email { get; set; } = null!;
         public string Senha { get; set; } = null!;
 
