@@ -1,6 +1,7 @@
 ﻿using gufi_webApi.Domains;
 using gufi_webApi.Interfaces;
 using gufi_webApi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace gufi_webApi.Controllers
             _tiposEventosRepository = new TiposEventoRepository();
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult ReadAll()
         {
@@ -30,6 +32,7 @@ namespace gufi_webApi.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -44,6 +47,7 @@ namespace gufi_webApi.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpDelete("deletarporid/{id}")]
         public IActionResult DeleteId(int id)
         {
@@ -58,6 +62,7 @@ namespace gufi_webApi.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpDelete("deletarpornome/{nomeTipoEvento}")]
         public IActionResult DeleteNome(string nomeTipoEvento)
         {
@@ -72,6 +77,7 @@ namespace gufi_webApi.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Post(TipoEvento tipoEvento)
         {

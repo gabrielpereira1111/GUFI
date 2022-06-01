@@ -1,6 +1,7 @@
 ﻿using gufi_webApi.Domains;
 using gufi_webApi.Interfaces;
 using gufi_webApi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace gufi_webApi.Controllers
             _instituicaoRepository = new InstituicaoRepository();
         }
 
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Post(Instituicao instituicao)
         {
