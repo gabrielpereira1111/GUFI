@@ -40,12 +40,26 @@ namespace gufi_webApi.Repositories
 
         public void CadastrarDir(IFormFile arquivo, int idUsuario)
         {
-            throw new NotImplementedException();
+            string nomeArquivo = idUsuario.ToString() + ".png";
+
+            using (var file = new FileStream(Path.Combine("Perfil", nomeArquivo), FileMode.Create))
+            {
+                arquivo.CopyTo(file);
+            }
         }
 
         public string ConsularDir(int idUsuario)
         {
-            throw new NotImplementedException();
+            string nomeArquivo = idUsuario.ToString() + ".png";
+            string caminho = Path.Combine("Perfil", nomeArquivo);
+            if (File.Exists(caminho))
+            {
+                byte[] bytes = File.ReadAllBytes(caminho);
+                string base64 = Convert.ToBase64String(bytes);
+                return base64;
+            }
+
+            return null;
         }
 
         public string ConsultarBD(int idUsuario)

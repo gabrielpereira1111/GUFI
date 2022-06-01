@@ -61,5 +61,49 @@ namespace gufi_webApi.Controllers
                 return BadRequest(error);
             }
         }
+
+        [HttpPost("cadastro/dir")]
+        public IActionResult CadastroDir(IFormFile file)
+        {
+            try
+            {
+                if (file.Length > 6000000)
+                {
+                    return BadRequest("Tamanho suportado da imagem excedido");
+                }
+
+                string extensao = file.FileName.Split('.').Last();
+
+                if (extensao != "png")
+                {
+                    return BadRequest("Somente formato PNG aceito");
+                }
+
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(p => p.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                _usuarioRepository.CadastrarDir(file, idUsuario);
+
+                return Ok();
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
+
+        [HttpGet("consulta/dir")]
+        public IActionResult ConsultaDir()
+        {
+            try
+            {
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(p => p.Type == JwtRegisteredClaimNames.Jti).Value);
+                return Ok(_usuarioRepository.ConsultarBD(idUsuario));
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
     }
 }
