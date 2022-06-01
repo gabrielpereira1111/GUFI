@@ -8,14 +8,15 @@ namespace gufi_webApi.Repositories
     public class PresencaRepository : IPresencaRepository
     {
         GufiContext ctx = new GufiContext();
-        public void AtualizarPresencao(int idPresenca, string situacao)
+        public void AtualizarPresencas(int idPresenca, string situacao)
         {
             throw new NotImplementedException();
         }
 
         public void Inscrever(Presenca presenca)
         {
-            throw new NotImplementedException();
+            ctx.Presencas.Add(presenca);
+            ctx.SaveChanges();
         }
 
         public List<Presenca> ListarMinhas(int idUsuario)

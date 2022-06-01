@@ -6,6 +6,6 @@ namespace gufi_webApi.Interfaces
     {
         List<Presenca> ListarMinhas(int idUsuario);
         void Inscrever(Presenca presenca);
-        void AtualizarPresencao(int idPresenca, string situacao);
+        void AtualizarPresencas(int idPresenca, string situacao);
     }
 }

@@ -22,7 +22,7 @@ namespace gufi_webApi.Controllers
         }
 
         [Authorize(Roles = "2")]
-        [HttpGet]
+        [HttpGet("minhaspresencas")]
         public IActionResult ListarMinhas()
         {
             try
@@ -35,6 +35,31 @@ namespace gufi_webApi.Controllers
                 }
 
                 return Ok(listaPresenca);
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
+
+        [Authorize(Roles = "2")]
+        [HttpPost("inscricao/{idEvento}")]
+        public IActionResult Inscrever(int idEvento)
+        {
+
+            try
+            {
+                Presenca presenca = new Presenca()
+                {
+                    IdEvento = idEvento,
+                    IdUsuario = Convert.ToInt32(HttpContext.User.Claims.First(u => u.Type == JwtRegisteredClaimNames.Jti).Value),
+                    IdSituacao = 3
+                };
+
+                _presencaRepository.Inscrever(presenca);
+
+                return StatusCode(201);
+
             }
             catch (Exception error)
             {
