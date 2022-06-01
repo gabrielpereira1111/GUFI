@@ -75,5 +75,19 @@ namespace gufi_webApi.Controllers
                 return BadRequest(error);
             }
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(TipoUsuario tipoUsuario,int id)
+        {
+            try
+            {
+                _tipoUsuarioRepository.Update(tipoUsuario, id);
+                return StatusCode(201);
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
     }
 }

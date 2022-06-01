@@ -46,7 +46,16 @@ namespace gufi_webApi.Repositories
 
         public void Update(TipoUsuario tipoUsuario, int idTipoUsuario)
         {
-            throw new NotImplementedException();
+            TipoUsuario tipoUsuarioBuscado = GetById(idTipoUsuario);
+            
+            if (tipoUsuarioBuscado != null)
+            {
+                tipoUsuarioBuscado.TituloTipoUsuario = tipoUsuario.TituloTipoUsuario;
+                
+            }
+
+            ctx.TipoUsuarios.Update(tipoUsuarioBuscado);
+            ctx.SaveChanges();
         }
     }
 }
