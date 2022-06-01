@@ -81,9 +81,5 @@ namespace gufi_webApi.Repositories
                 .ToList();
         }
 
-        public void Update(Evento evento, int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

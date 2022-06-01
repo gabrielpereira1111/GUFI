@@ -7,7 +7,6 @@ namespace gufi_webApi.Interfaces
         void Create(Evento evento);
         List<Evento> ReadAll();
         Evento GetById(int id);
-        void Update(Evento evento, int id);
         void Delete(int id);
     }
 }
