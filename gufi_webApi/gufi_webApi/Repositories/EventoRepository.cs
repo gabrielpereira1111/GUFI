@@ -10,7 +10,8 @@ namespace gufi_webApi.Repositories
         GufiContext ctx = new GufiContext();
         public void Create(Evento evento)
         {
-            throw new NotImplementedException();
+            ctx.Eventos.Add(evento);
+            ctx.SaveChanges();
         }
 
         public void Delete(int id)
