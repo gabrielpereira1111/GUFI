@@ -8,14 +8,14 @@ namespace gufi_webApi.Domains
     {
         public int IdPresenca { get; set; }
         [Required(ErrorMessage = "Informe o usuário!")]
-        public int? IdUsuario { get; set; }
+        public int IdUsuario { get; set; }
         [Required(ErrorMessage = "Informe o evento!")]
-        public int? IdEvento { get; set; }
+        public int IdEvento { get; set; }
         [Required(ErrorMessage = "Informe a situação!")]
-        public int? IdSituacao { get; set; } = 3;
+        public int IdSituacao { get; set; } = 3;
 
-        public virtual Evento IdEventoNavigation { get; set; } = null!;
-        public virtual Situacao IdSituacaoNavigation { get; set; } = null!;
-        public virtual Usuario IdUsuarioNavigation { get; set; } = null!;
+        public virtual Evento? IdEventoNavigation { get; set; }
+        public virtual Situacao? IdSituacaoNavigation { get; set; }
+        public virtual Usuario? IdUsuarioNavigation { get; set; }
     }
 }

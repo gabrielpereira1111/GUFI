@@ -10,7 +10,25 @@ namespace gufi_webApi.Repositories
         GufiContext ctx = new GufiContext();
         public void AtualizarPresencas(int idPresenca, string situacao)
         {
-            throw new NotImplementedException();
+            Presenca presencaBuscada = ctx.Presencas.First(p => p.IdPresenca == idPresenca);
+
+            switch (situacao)
+            {
+                case "1":
+                    presencaBuscada.IdSituacao = 1;
+                    break;
+                case "2":
+                    presencaBuscada.IdSituacao = 2;
+                    break;
+                case "3":
+                    presencaBuscada.IdSituacao = 3;
+                    break;
+                default:
+                    break;
+            }
+
+            ctx.Presencas.Update(presencaBuscada);
+            ctx.SaveChanges();
         }
 
         public void Inscrever(Presenca presenca)

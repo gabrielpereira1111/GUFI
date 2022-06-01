@@ -66,5 +66,20 @@ namespace gufi_webApi.Controllers
                 return BadRequest(error);
             }
         }
+
+        [Authorize(Roles = "1")]
+        [HttpPatch("{idPresenca}")]
+        public IActionResult AprovarRecusar(Presenca status, int idPresenca)
+        {
+            try
+            {
+                _presencaRepository.AtualizarPresencas(idPresenca, status.IdSituacao.ToString());
+                return StatusCode(204);
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
     }
 }
