@@ -1,6 +1,7 @@
 ﻿using gufi_webApi.Domains;
 using gufi_webApi.Interfaces;
 using gufi_webApi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace gufi_webApi.Controllers
             _tipoUsuarioRepository = new TipoUsuarioRepository();
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult ReadAll()
         {
@@ -30,6 +32,7 @@ namespace gufi_webApi.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -48,6 +51,7 @@ namespace gufi_webApi.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Post(TipoUsuario tipoUsuario)
         {
@@ -62,6 +66,7 @@ namespace gufi_webApi.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -76,6 +81,7 @@ namespace gufi_webApi.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpPut("{id}")]
         public IActionResult Update(TipoUsuario tipoUsuario,int id)
         {
