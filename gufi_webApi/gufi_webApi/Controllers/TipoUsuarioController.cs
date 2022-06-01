@@ -47,5 +47,19 @@ namespace gufi_webApi.Controllers
                 return BadRequest(error);
             }
         }
+
+        [HttpPost]
+        public IActionResult Post(TipoUsuario tipoUsuario)
+        {
+            try
+            {
+                _tipoUsuarioRepository.Create(tipoUsuario);
+                return StatusCode(201);
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
     }
 }

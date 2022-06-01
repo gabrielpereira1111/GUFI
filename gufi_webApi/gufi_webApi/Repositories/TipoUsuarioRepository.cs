@@ -11,7 +11,8 @@ namespace gufi_webApi.Repositories
 
         public void Create(TipoUsuario tipoUsuario)
         {
-            throw new NotImplementedException();
+            ctx.TipoUsuarios.Add(tipoUsuario);
+            ctx.SaveChanges();
         }
 
         public void Delete(int id)
