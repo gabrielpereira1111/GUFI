@@ -30,8 +30,7 @@ namespace gufi_webApi.Repositories
                 .Include(t => t.Usuarios)
                 .Select(t => new TipoUsuario
                 {
-                    TituloTipoUsuario = t.TituloTipoUsuario,
-                    Usuarios = new List<Usuario>()
+                    TituloTipoUsuario = t.TituloTipoUsuario
                 })
                 .ToList();
         }

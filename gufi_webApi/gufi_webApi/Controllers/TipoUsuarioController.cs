@@ -10,7 +10,7 @@ namespace gufi_webApi.Controllers
     [ApiController]
     public class TipoUsuarioController : ControllerBase
     {
-        private ITipoUsuarioRepository _tipoUsuarioRepository { get; set; } = null!
+        private ITipoUsuarioRepository _tipoUsuarioRepository { get; set; } = null!;
         public TipoUsuarioController()
         {
             _tipoUsuarioRepository = new TipoUsuarioRepository();
