@@ -21,7 +21,12 @@ namespace gufi_webApi.Repositories
 
         public TipoUsuario GetById(int id)
         {
-            throw new NotImplementedException();
+            TipoUsuario usuarioBuscado = ctx.TipoUsuarios.First(p => p.IdTipoUsuario == id);
+            if (usuarioBuscado != null)
+            {
+                return usuarioBuscado;
+            }
+            return null;
         }
 
         public List<TipoUsuario> ReadAll()
