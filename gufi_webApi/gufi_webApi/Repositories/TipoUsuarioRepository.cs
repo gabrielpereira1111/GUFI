@@ -17,15 +17,17 @@ namespace gufi_webApi.Repositories
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            TipoUsuario tipoUsuarioBuscado = GetById(id);
+            ctx.Remove(tipoUsuarioBuscado);
+            ctx.SaveChanges();
         }
 
         public TipoUsuario GetById(int id)
         {
-            TipoUsuario usuarioBuscado = ctx.TipoUsuarios.First(p => p.IdTipoUsuario == id);
-            if (usuarioBuscado != null)
+            TipoUsuario tipoUsuarioBuscado = ctx.TipoUsuarios.First(p => p.IdTipoUsuario == id);
+            if (tipoUsuarioBuscado != null)
             {
-                return usuarioBuscado;
+                return tipoUsuarioBuscado;
             }
             return null;
         }

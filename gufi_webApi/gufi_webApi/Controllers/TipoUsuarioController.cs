@@ -61,5 +61,19 @@ namespace gufi_webApi.Controllers
                 return BadRequest(error);
             }
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _tipoUsuarioRepository.Delete(id);
+                return NoContent();
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
     }
 }
