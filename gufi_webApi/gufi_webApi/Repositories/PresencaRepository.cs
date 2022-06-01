@@ -24,6 +24,32 @@ namespace gufi_webApi.Repositories
                 .Include(p => p.IdUsuarioNavigation)
                 .Include(p => p.IdSituacaoNavigation)
                 .Include(p => p.IdEventoNavigation)
+                .Select(p => new Presenca{ 
+                    IdPresenca = p.IdPresenca,
+                    IdUsuario = p.IdUsuario,
+                    IdEvento = p.IdEvento,
+                    IdSituacao = p.IdSituacao,
+                    IdEventoNavigation = new Evento
+                    {
+                        IdEvento = p.IdEventoNavigation.IdEvento,
+                        NomeEvento = p.IdEventoNavigation.NomeEvento,
+                        Descricao = p.IdEventoNavigation.Descricao,
+                        DataEvento = p.IdEventoNavigation.DataEvento,
+                        AcessoLivre = p.IdEventoNavigation.AcessoLivre
+                    },
+                    IdSituacaoNavigation = new Situacao
+                    {
+                        IdSituacao = p.IdSituacaoNavigation.IdSituacao,
+                        Descricao = p.IdSituacaoNavigation.Descricao
+                    },
+                    IdUsuarioNavigation = new Usuario
+                    {
+                        IdUsuario = p.IdUsuarioNavigation.IdUsuario,
+                        NomeUsuario = p.IdUsuarioNavigation.NomeUsuario,
+                        Email = p.IdUsuarioNavigation.Email,
+                        IdTipoUsuario = p.IdUsuarioNavigation.IdTipoUsuario
+                    }
+                })
                 .Where(p => p.IdUsuario == idUsuario)
                 .ToList();
         }

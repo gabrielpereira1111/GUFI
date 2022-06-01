@@ -14,8 +14,8 @@ namespace gufi_webApi.Domains
         [Required(ErrorMessage = "Informe a situação!")]
         public int? IdSituacao { get; set; } = 3;
 
-        public virtual Evento? IdEventoNavigation { get; set; }
-        public virtual Situacao? IdSituacaoNavigation { get; set; }
-        public virtual Usuario? IdUsuarioNavigation { get; set; }
+        public virtual Evento IdEventoNavigation { get; set; } = null!;
+        public virtual Situacao IdSituacaoNavigation { get; set; } = null!;
+        public virtual Usuario IdUsuarioNavigation { get; set; } = null!;
     }
 }
