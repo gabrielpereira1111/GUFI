@@ -1,6 +1,7 @@
 ﻿using gufi_webApi.Context;
 using gufi_webApi.Domains;
 using gufi_webApi.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace gufi_webApi.Repositories
 {
@@ -25,7 +26,14 @@ namespace gufi_webApi.Repositories
 
         public List<TipoUsuario> ReadAll()
         {
-            throw new NotImplementedException();
+            return ctx.TipoUsuarios
+                .Include(t => t.Usuarios)
+                .Select(t => new TipoUsuario
+                {
+                    TituloTipoUsuario = t.TituloTipoUsuario,
+                    Usuarios = new List<Usuario>()
+                })
+                .ToList();
         }
 
         public void Update(TipoUsuario tipoUsuario, int idTipoUsuario)
