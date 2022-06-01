@@ -15,7 +15,9 @@ namespace gufi_webApi.Repositories
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Evento eventoBuscado = GetById(id);
+            ctx.Eventos.Remove(eventoBuscado);
+            ctx.SaveChanges();
         }
 
         public Evento GetById(int id)
