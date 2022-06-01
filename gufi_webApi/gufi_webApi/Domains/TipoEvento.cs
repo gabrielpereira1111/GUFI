@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace gufi_webApi.Domains
 {
@@ -12,7 +11,6 @@ namespace gufi_webApi.Domains
         }
 
         public int IdTipoEvento { get; set; }
-        [Required(ErrorMessage = "Informe o título do tipo do evento")]
         public string? TituloTipoEvento { get; set; }
 
         public virtual ICollection<Evento> Eventos { get; set; }

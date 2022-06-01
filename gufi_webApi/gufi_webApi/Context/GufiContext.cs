@@ -18,6 +18,7 @@ namespace gufi_webApi.Context
         }
 
         public virtual DbSet<Evento> Eventos { get; set; } = null!;
+        public virtual DbSet<ImagemUsuario> ImagemUsuarios { get; set; } = null!;
         public virtual DbSet<Instituicao> Instituicaos { get; set; } = null!;
         public virtual DbSet<Presenca> Presencas { get; set; } = null!;
         public virtual DbSet<Situacao> Situacaos { get; set; } = null!;
@@ -30,7 +31,7 @@ namespace gufi_webApi.Context
             if (!optionsBuilder.IsConfigured)
             {
                 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source= DSK_PHD001\\SQLEXPRESS;Initial Catalog= Gufi;user Id= sa;pwd= 123456");
+                optionsBuilder.UseSqlServer("Data Source=DSK_PHD001\\SQLEXPRESS;Initial Catalog=Gufi;user Id=sa;pwd=123456");
             }
         }
 
@@ -76,6 +77,40 @@ namespace gufi_webApi.Context
                     .WithMany(p => p.Eventos)
                     .HasForeignKey(d => d.IdTipoEvento)
                     .HasConstraintName("FK__evento__idTipoEv__30F848ED");
+            });
+
+            modelBuilder.Entity<ImagemUsuario>(entity =>
+            {
+                entity.HasKey(e => e.IdImagemUsuario)
+                    .HasName("PK__ImagemUs__078BE970F0DE5E1C");
+
+                entity.ToTable("ImagemUsuario");
+
+                entity.Property(e => e.IdImagemUsuario).HasColumnName("idImagemUsuario");
+
+                entity.Property(e => e.Binario).HasColumnName("binario");
+
+                entity.Property(e => e.DataInclusao)
+                    .HasColumnType("datetime")
+                    .HasColumnName("dataInclusao")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+
+                entity.Property(e => e.MimeType)
+                    .HasMaxLength(80)
+                    .IsUnicode(false)
+                    .HasColumnName("mimeType");
+
+                entity.Property(e => e.NomeArquivo)
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("nomeArquivo");
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithMany(p => p.ImagemUsuarios)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .HasConstraintName("FK__ImagemUsu__idUsu__49C3F6B7");
             });
 
             modelBuilder.Entity<Instituicao>(entity =>
