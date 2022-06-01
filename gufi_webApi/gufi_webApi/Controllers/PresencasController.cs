@@ -27,7 +27,7 @@ namespace gufi_webApi.Controllers
         {
             try
             {
-                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.FirstOrDefault(p => p.Type == JwtRegisteredClaimNames.Jti));
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(p => p.Type == JwtRegisteredClaimNames.Jti).Value);
                 List<Presenca> listaPresenca = _presencaRepository.ListarMinhas(idUsuario);
                 if (listaPresenca == null)
                 {

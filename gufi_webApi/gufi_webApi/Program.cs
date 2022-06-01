@@ -29,8 +29,8 @@ builder.Services.AddAuthentication(
                         ValidateAudience = true,
                         ValidateIssuerSigningKey = true,
                         ValidateLifetime = true,
-                        ValidIssuer = "gufi_webApi",
-                        ValidAudience = "gufi_webApi",
+                        ValidIssuer = "Minha API",
+                        ValidAudience = "Minha API",
                         ClockSkew = TimeSpan.FromMinutes(30),
                         IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("chave-segura-gufi"))
                     };
@@ -45,8 +45,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseAuthorization();
 app.UseAuthentication(); 
+app.UseAuthorization();
 
 app.MapControllers();
 

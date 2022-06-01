@@ -15,7 +15,7 @@ namespace gufi_webApi.Controllers
     [ApiController]
     public class UsuariosController : ControllerBase
     {
-        private IUsuarioRepository? _usuarioRepository { get; set; }
+        private IUsuarioRepository _usuarioRepository { get; set; }
         public UsuariosController()
         {
             _usuarioRepository = new UsuarioRepository();
@@ -44,8 +44,8 @@ namespace gufi_webApi.Controllers
                     var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
                     var myToken = new JwtSecurityToken(
-                            issuer : "gufi_webApi",
-                            audience : "gufi_webApi",
+                            issuer : "Minha API",
+                            audience : "Minha API",
                             claims : claims,
                             expires : DateTime.Now.AddMinutes(30),
                             signingCredentials : creds
